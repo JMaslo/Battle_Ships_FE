@@ -9,8 +9,7 @@ export default function App() {
       <Header />
       <div className="h-3 border-b-2 border-gray-300 mr-96 ml-96"></div>   
       <Players /> 
-      <Fields />
-      <Fields />    
+      <Fields /> 
       <Footer />      
     </div>
   );
