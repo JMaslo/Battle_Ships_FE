@@ -1,15 +1,9 @@
-import React from 'react';
-
 export default function Fields() {
   const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
   const numbers = Array.from({ length: 10 }, (_, i) => i + 1);
 
   const renderLetters = () => {
     return letters.map((letter, index) => <th key={index}>{letter}</th>);
-  };
-
-  const renderNumbers = () => {
-    return numbers.map((number, index) => <th key={index}>{number}</th>);
   };
 
   const renderTableCells = () => {
