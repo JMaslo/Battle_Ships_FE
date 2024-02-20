@@ -23,6 +23,7 @@ function MainContainer() {
   useEffect(() => {
     if (!stompClient?.connected) {
       setPlayerName('')
+      setGameId('')
     }
   }, [stompClient?.connected])
 
