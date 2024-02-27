@@ -23,7 +23,6 @@ function GameSelection({ playerName, setGameId }: Props) {
 
   // Updates the list of games when the server broadcasts a new list
   useSubscription("/topic/gameList", (message) => setGames(JSON.parse(message.body)));
-  const refreshGameList = () => stompClient?.publish({destination: '/app/topic/refreshGameList', body: ''})
 
   // Handles the response from the server
   useSubscription("/user/queue/selectGameResult", (message) => handleResponse(JSON.parse(message.body)));
@@ -55,7 +54,6 @@ function GameSelection({ playerName, setGameId }: Props) {
     })
   }
   
-  refreshGameList()
   return (
     <div>
       <h2>Create or join a game, your name is {playerName}</h2>
@@ -63,7 +61,7 @@ function GameSelection({ playerName, setGameId }: Props) {
         <button className="ml-2 border-2 border-black p-1" type="submit">Create new game</button>
       </form>
       {errorMessage && <h4>{errorMessage}</h4>}
-      Available games: <button className="ml-2 border-2 border-black p-1" onClick={refreshGameList}>Refresh</button>
+      Available games:
       <ul className="p-2">
         {games.map((game: GameInfo) => (
           <GameSelectionItem key={game.id} game={game} onSelect={() => joinGame(game.id)}/>
